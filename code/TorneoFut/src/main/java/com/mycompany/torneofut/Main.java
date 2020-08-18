@@ -27,7 +27,7 @@ public class Main {
         try (Connection connection = DriverManager.getConnection(url, user, password)) {
 
             /*Ejemplo basico - Verificar conexion*/
-            ejemploBasico(connection);
+//            ejemploBasico(connection);
 
             /*Creamos un cliente*/
 //            crearCliente(connection);
@@ -39,7 +39,7 @@ public class Main {
 //            agregarReparacion(connection);
 
             /*Busqueda*/
-            obtenerCliente(connection);
+//            obtenerCliente(connection);
             buscarCliente(connection);
 
             connection.close();
@@ -105,7 +105,7 @@ public class Main {
      * @param connection
      */
     public static void agregarReparacion(Connection connection) {
-        String query = "INSERT INTO REPARACION (descripcion, fecha, costo, matricula_vehiculo, DPI_mecanico)VALUES (?,?,?,?,?)";
+        String query = "INSERT INTO REPARACION (descripcion, fecha, costo, matricula_vehiculo, DPI_mecanico) VALUES (?,?,?,?,?)";
         String descripcion = "Descripcion agregada desde JAVA";
         String fecha = "2020-08-18";
         double costo = 300;
@@ -146,7 +146,7 @@ public class Main {
     public static void actualizarCliente(Connection connection) {
         String query = "UPDATE CLIENTE SET nombre = ? WHERE NIT = ?";
         String NIT = "2222";
-        String nombre = "Orlando";
+        String nombre = "ORLANDO";
 
         try (PreparedStatement preSt = connection.prepareStatement(query)) {
 
@@ -195,7 +195,7 @@ public class Main {
      * @param connection
      */
     public static void buscarCliente(Connection connection) {
-        String query = "SELECT * FROM CLIENTE WHERE nombre LIKE ?";
+        String query = "SELECT NIT, nombre, apellido, telefono FROM CLIENTE WHERE nombre LIKE ?";
         String nombreBusqueda = "an";
 
         try (PreparedStatement preSt = connection.prepareStatement(query)) {
